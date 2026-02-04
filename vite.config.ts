@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     // Netlify/dev => "/", GitHub Pages => 
-    base: isGH ? "/Sueldo_Neto/" : "/",
+    base: isGH ? "/prueba_sueldo_neto/" : "/",
     build: {
       sourcemap: true,
     },
