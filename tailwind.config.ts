@@ -1,0 +1,163 @@
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.25rem",
+        lg: "1.5rem",
+        xl: "2rem",
+        "2xl": "2.5rem",
+        "3xl": "3rem",
+        "4xl": "3.5rem",
+      },
+      // anchos máximos del container por breakpoint
+      screens: {
+        "2xl": "1400px",
+        "3xl": "1720px", // cómodo para 1080p
+        "4xl": "1920px", // Full HD
+        "5xl": "2560px", // 1440p / 2.5K
+      },
+    },
+    extend: {
+      // breakpoints extra para usar clases 3xl:, 4xl:, 5xl:, tv:
+      screens: {
+        "3xl": "1920px",
+        "4xl": "2560px",
+        "5xl": "3840px", // 4K
+        "tv": "4096px", // 🟢 Televisores grandes o ultra-wide
+      },
+
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+          intense: "hsl(var(--primary-intense))",
+          deep: "hsl(var(--primary-deep))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success-bright))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning-soft))",
+          foreground: "hsl(0 0% 100%)",
+        },
+      },
+
+      fontFamily: {
+        sans: [
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif",
+        ],
+      },
+
+      backgroundImage: {
+        "gradient-primary": "var(--gradient-primary)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-shine": "var(--gradient-shine)",
+      },
+
+      boxShadow: {
+        card: "var(--shadow-card)",
+        elevated: "var(--shadow-elevated)",
+        glow: "var(--shadow-glow)",
+      },
+
+      transitionTimingFunction: {
+        smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
+        spring: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+      },
+
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "count-up": {
+          from: { transform: "translateY(20px)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        glow: {
+          "0%, 100%": { boxShadow: "var(--shadow-card)" },
+          "50%": { boxShadow: "var(--shadow-glow)" },
+        },
+        "slide-in": {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "count-up": "count-up 0.6s ease-out forwards",
+        glow: "glow 2s ease-in-out infinite",
+        "slide-in": "slide-in 0.5s ease-out forwards",
+        "fade-in": "fade-in 0.4s ease-out forwards",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
